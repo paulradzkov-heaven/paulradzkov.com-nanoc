@@ -1,0 +1,30 @@
+---
+title: Блог
+description: "Блог Павла Радькова."
+is_hidden: true
+---
+
+<h1>Блог</h1>
+
+<div class="archives">
+	<% articles_by_year_month.each do |year, month_h| %>
+		<% month_h.each do |month, item_a| %>
+			<h2 class="timeline-mark"><%= "#{year} #{RUSMON[month]}" %></h2>
+			<ul class="postlist">
+				<% item_a.each do |item| %>
+					<li><%= render("_excerpt", :item => item) %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	<% end %>
+</div>
+<aside class="tag-cloud">
+	<nav id="taglist">
+		Облако тегов:<br/>
+		<% tags = count_tags() %>
+		<% tags.each.sort_by {|k,v| k}.each do |tag_count| %>
+			<% tag = tag_count[0] %>
+			<a href="/tags/<%= tag %>/" class="tag"><%= tag %></a>
+		<% end %> 
+	</nav>
+</aside>

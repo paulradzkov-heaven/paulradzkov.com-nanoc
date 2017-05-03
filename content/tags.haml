@@ -1,0 +1,19 @@
+---
+title: Облако тэгов
+is_hidden: true
+---
+
+%h1
+  Облако тэгов
+  
+%p Здесь собраны все тэги со всех постов в алфавитном порядке. Приятной навигации. 
+
+.tags-page
+  - tags = count_tags()
+  %ul.tag-cloud
+    - tags.sort_by{|k,v| k}.each do |tag_count|
+      - tag = tag_count[0]
+      - count = tag_count[1]
+      %li
+        %a(href="/tags/#{tag}/" class='tag')= tag
+        %sup #{count}

@@ -1,0 +1,12 @@
+---
+title: "Статьи по тегу"
+description: "Навигация по тегам."
+---
+<h1>
+  <%= "Статьи по тегу &laquo;#{tag.capitalize}&raquo;" %>
+</h1>
+<div class="tag-page">
+	<% items_with_tag(tag).each do |item| %>
+    <%= render("_excerpt", :item => item) %>
+	<% end %>
+</div>

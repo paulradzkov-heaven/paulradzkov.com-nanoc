@@ -1,0 +1,34 @@
+---
+---
+<% max = config[:other_articles_max].to_i %>
+<%  older_only ||= false %>
+<div id="other-articles">
+  <div class="older">
+	<p class="nav-label-older">&larr; Старше</p>
+    <ul>
+      <%  n_older_articles(max, reference_item).each do |item| %>
+		<% url = "#{item.identifier}" %>
+        <li>
+          <h3>
+			<a href="<%= url %>" title="<%= item[:excerpt] || '' %>">&laquo; <span><%= item[:title] %></span></a>
+		  </h3>
+		</li> 
+	  <% end %>
+	</ul>
+  </div>
+  <div class="newer">
+	<%  if !older_only %>
+	  <p class="nav-label-newer">Новее &rarr;</p>
+      <ul>
+		<%  n_newer_articles(max, reference_item).reverse.each do |item| %>
+		  <% url = "#{item.identifier}" %>
+          <li>
+            <h3>
+			  <a href="<%= url %>" title="<%= item[:excerpt] || '' %>"><span><%= item[:title] %></span> &raquo;</a>
+			</h3>
+		  </li>
+		<% end %>
+	  </ul>
+	<% end %>
+  </div>
+</div>

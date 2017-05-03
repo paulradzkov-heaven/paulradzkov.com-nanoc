@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ru"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="ru"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>Pointer-events</title>
+	<meta name="keywords" content=", css, progressive enhancement"/>
+	<meta name="description" content="Свойство pointer-events придет к нам с CSS4, но уже сейчас поддерживается более чем половиной браузеров. Если установить pointer-events: none, то элемент перестанет реагировать на hover, click и другие события мыши. Он станет «прозрачным» для взаимодействия, а hover и click будут передаваться элементу, лежащему под ним. Рассмотрим, для чего это можно использовать. Автор: Павел Радьков. Дата публикации: 2012-12-09"/>
+	<meta name="author" content="Павел Радьков" />
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="alternate" type="application/rss+xml" title="Блог Павла Радькова" href="http://paulradzkov.com/atom.xml"/> 
+	<link rel="stylesheet" type="text/css" href="/assets/css/alpha.css?v=4-5" media="all"/>
+    
+    <link rel="stylesheet" href="/2012/pointer-events/custom.css"/>
+    
+	<script src="/assets/js/libs/modernizr-2.0.6.min.js"></script>
+	
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29416794-1']);
+  _gaq.push(['_setDomainName', 'paulradzkov.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+	
+    <div class="allpage">
+		<header class="siteheader">
+			<div class="logo resize-animation"><a href='/'>Павел Радьков</a></div>
+			<nav class="nav resize-animation">
+				<ul>
+					<li><a href='/blog/'>Блог</a></li>
+					<li><a href='/demo/'>Снипеты</a></li>
+					<li><a href='/tags/'>Тэги</a></li>
+					<li><a href="/atom.xml">RSS</a></li>
+				</ul>
+			</nav>		  
+		</header>
+		<div class="pagefield">
+			
+			
+				
+<div class="article">
+  <h1> 
+	
+      Pointer-events
+	
+  </h1>
+  
+	<div class="meta resize-animation">
+		<ul class="tags">
+			<li>9 Декабря 2012</li>
+			<li>&bull;</li>
+			<li><a href="/2012/pointer-events/#disqus_thread" data-disqus-identifier="pointer-events" >Комментарии</a></li>
+			
+			<li>&bull;</li>
+				
+					<li>
+						<a href="/tags/css/" class='tag'>css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/progressive enhancement/" class='tag'>progressive enhancement</a>
+					</li>
+				
+			
+			
+		</ul>
+	</div>
+
+
+  <div class="body">
+	<p>Представим ситуацию, когда у нас один html-элемент расположен поверх другого. Но нам нужно, чтобы нижний элемент был кликабельным или реагировал на hover.</p>
+
+<p>В CSS4 есть такое свойство — <code><a href="http://wiki.csswg.org/spec/css4-ui#pointer-events">pointer-events</a></code>.</p>
+
+<p><code><span class="key">pointer-events</span>: <span class="value">none</span></code> — элемент перестанет реагировать на hover, click и другие события мыши. Он станет «прозрачным» для взаимодействия, а hover и click будут передаваться элементу, лежащему под ним.</p>
+
+<p><code><span class="key">pointer-events</span>: <span class="value">auto</span></code> (значение по-умолчанию) — включает стандартное поведение элемента.</p>
+
+<p>Изначально свойство «pointer-events» было введено для SVG и должно было стать частью CSS3, но было перенесено в спецификацию CSS4. Кроме «none» и «auto» есть <a href="https://developer.mozilla.org/ru/docs/CSS/pointer-events">еще несколько значений</a>, но они применимы только к SVG, и мы не будем их рассматривать.</p>
+
+<p>Несмотря на то, что свойство относится к  CSS4, <a href="http://caniuse.com/pointer-events" title="Где работает pointer-events?">pointer-events поддерживается</a> уже большим количеством браузеров и довольно давно. Не работает только в IE и Opera. А значит, его можно осторожно использовать для улучшения юзабилити только в некритических местах, в рамках прогрессивного улучшения.</p>
+
+<p>Проверить, поддерживается ли это свойство браузером, можно с помощью <a href="https://github.com/ausi/Feature-detection-technique-for-pointer-events" title="Modernizr plugin feature detection for css property 'pointer-events'">специального теста для Modernizer</a>.</p>
+
+<h2>Пример 1</h2>
+
+<p>Рассмотрим на практике.</p>
+
+<div class="demo">
+
+    <div class="demo-card">
+    	<a href="#" class="demo-card-image-holder"><img src="http://placehold.it/300x200" alt=""></a>
+    	<h3 class="demo-card-title"><a href="#" class="demo-card-link">Esse iusto consectetur quibusdam quasi excepturi voluptatum architecto aliquid</a></h3>
+        <p class="demo-card-descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit ullam minus a ipsum eum rerum eaque maxime amet beatae modi qui incidunt voluptas quis maiores quos autem inventore! Mollitia praesentium. Impedit ullam minus a ipsum eum rerum eaque maxime amet beatae modi qui incidunt voluptas quis maiores quos autem inventore! Mollitia praesentium.</p>
+        <span class="demo-card-overlay" style="pointer-events:none;"><!--gradient overlay--></span>
+    </div>
+    <div class="demo-card">
+    	<a href="#" class="demo-card-image-holder"><img src="http://placehold.it/300x200" alt=""></a>
+    	<h3 class="demo-card-title"><a href="#" class="demo-card-link">Esse iusto consectetur quibusdam quasi excepturi voluptatum architecto aliquid</a></h3>
+        <p class="demo-card-descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit ullam minus a ipsum eum rerum eaque maxime amet beatae modi qui incidunt voluptas quis maiores quos autem inventore! Mollitia praesentium. Impedit ullam minus a ipsum eum rerum eaque maxime amet beatae modi qui incidunt voluptas quis maiores quos autem inventore! Mollitia praesentium.</p>
+        <span class="demo-card-overlay"><!--gradient overlay--></span>
+    </div>
+    <div class="clr"></div>
+</div>
+
+<p>В первом примере для белого градиента, накрывающего текст, pointer-events установлен в none. Текст легко выделяется мышью сквозь градиент. Даже курсор меняет свою форму со стрелки на выделение текста.</p>
+
+<p>Во втором примере pointer-events не задан, маска градиента не даёт выделить текст, курсор имеет форму стрелки, как для нетекстовых элементов.</p>
+
+<h2>Пример 2</h2>
+
+<p>Задача: сделать так, чтобы ссылка в меню становилась некликабельной, если она ведет на эту же страницу.</p>
+
+<div class="demo">
+
+    <ul class="demo-menu">
+<li><a href="#home">Home</a></li>
+        <li><a href="#blog" class="current">Blog</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#archive">Archive</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+    </ul>
+</div>
+
+<p>Обычно в CMS уже есть какой-либо класс для индикации текущей страницы в меню. Допишем ему pointer-events:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-css"><span class="class">.demo-menu</span> <span class="type">a</span><span class="class">.current</span> {
+    <span class="key">background</span>: <span class="color">#AAA</span>;
+    <span class="key">color</span>: <span class="color">#333</span>;
+    <span class="key">pointer-events</span>: <span class="value">none</span>; <span class="comment">/* disables click event */</span>
+}</code></pre></div></div>
+  </div>
+</div>
+				
+				<ul class="social-buttons cf">
+					<li><a href="http://twitter.com/share" class="socialite twitter-share" data-count="vertical" data-via="paul_radzkov" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+					<li><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="tall" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+					<li><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+				</ul>
+				
+				
+
+<div id="other-articles">
+  <div class="older">
+	<p class="nav-label-older">&larr; Старше</p>
+    <ul>
+      
+		
+        <li>
+          <h3>
+			<a href="/2012/chrome_dev_tools/" title="Заметка о том, как в Хроме выключить яваскрипт, отключить кэш или поменять строку User Agent и эмулировать тач-события.">&laquo; <span>Как отключить javascript в Google Chrome</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/crosswise/" title="Как при помощи CSS перечеркнуть слово или блок текста диагональными линиями крест-накрест.">&laquo; <span>Перечёркивание крест-накрест</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/mobile_developing/" title="Abobe представила замечательный комплекс программ, позволяющий синхронно просматривать и проводить отладку сайтов в браузерах Webkit на компе и нескольких планшетах и смартфонах одновременно. Очень полезное приложение для разработки сайтов с отзывчивой версткой.">&laquo; <span>Отладка мобильных сайтов в Webkit. Инспектор кода на мобильных устройствах</span></a>
+		  </h3>
+		</li> 
+	  
+	</ul>
+  </div>
+  <div class="newer">
+	
+	  <p class="nav-label-newer">Новее &rarr;</p>
+      <ul>
+		
+		  
+          <li>
+            <h3>
+			  <a href="/2013/lists_and_floats/" title="Для дефолтных браузерных стилей характерно такое поведение: если картинка обтекает список слева, маркеры списка налазят на картинку. От этого можно избавиться незначительно переписав стили."><span>Списки и картинки с флоатами</span> &raquo;</a>
+			</h3>
+		  </li>
+		
+	  </ul>
+	
+  </div>
+</div>
+				<div class="clear"></div>
+				
+				<div id="disqus_thread"></div>
+
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+		</div>
+		<div class="pushfooter clear"></div>
+	</div>
+	<footer class="footer">
+        
+		<p class="copyright">&copy; Павел Радьков 
+        
+            2012
+        
+            
+            <!--div class="person-card" itemscope itemtype="http://schema.org/Person">
+                <img src="/assets/i/paulradzkov.jpg" class="photo" alt="Павел Радьков"/>
+                <p itemprop="name">Павел Радьков</p>
+                <a href="http://plus.google.com/115202814477140711940?rel=author">Google+</a>
+            </div-->
+            
+        </p>
+		<p class="thanx">Движок — <a href="http://nanoc.stoneship.org/">nanoc</a>.</p>
+	</footer>
+	
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	
+	
+		<script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'paulradzkov'; // required: replace example with your forum shortname
+			//var disqus_developer = 1; // developer mode is on
+			var disqus_identifier = 'pointer-events';
+			var disqus_title = 'Pointer-events';
+			
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<script src="/assets/js/libs/socialite.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				Socialite.load();
+			});
+		</script>
+	
+</body>
+</html>

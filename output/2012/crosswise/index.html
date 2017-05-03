@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ru"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="ru"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>Перечёркивание крест-накрест</title>
+	<meta name="keywords" content=", svg, css"/>
+	<meta name="description" content="Как при помощи CSS перечеркнуть слово или блок текста или картинку диагональными линиями крест-накрест. Автор: Павел Радьков. Дата публикации: 2012-10-28"/>
+	<meta name="author" content="Павел Радьков" />
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="alternate" type="application/rss+xml" title="Блог Павла Радькова" href="http://paulradzkov.com/atom.xml"/> 
+	<link rel="stylesheet" type="text/css" href="/assets/css/alpha.css?v=4-5" media="all"/>
+    
+	<script src="/assets/js/libs/modernizr-2.0.6.min.js"></script>
+	
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29416794-1']);
+  _gaq.push(['_setDomainName', 'paulradzkov.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+	
+    <div class="allpage">
+		<header class="siteheader">
+			<div class="logo resize-animation"><a href='/'>Павел Радьков</a></div>
+			<nav class="nav resize-animation">
+				<ul>
+					<li><a href='/blog/'>Блог</a></li>
+					<li><a href='/demo/'>Снипеты</a></li>
+					<li><a href='/tags/'>Тэги</a></li>
+					<li><a href="/atom.xml">RSS</a></li>
+				</ul>
+			</nav>		  
+		</header>
+		<div class="pagefield">
+			
+			
+				
+<div class="article">
+  <h1> 
+	
+      Перечёркивание крест-накрест
+	
+  </h1>
+  
+	<div class="meta resize-animation">
+		<ul class="tags">
+			<li>28 Октября 2012</li>
+			<li>&bull;</li>
+			<li><a href="/2012/crosswise/#disqus_thread" data-disqus-identifier="crosswise" >Комментарии</a></li>
+			
+			<li>&bull;</li>
+				
+					<li>
+						<a href="/tags/css/" class='tag'>css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/svg/" class='tag'>svg</a>
+					</li>
+				
+			
+			
+		</ul>
+	</div>
+
+
+  <div class="body">
+	<p>Итак, задача: перечеркнуть слово или блок текста или картинку диагональными линиями крест-накрест.</p>
+<p>
+	<a href="/demo/crosswise/" class="link-to-demo">Демо</a>
+</p>
+<p>Нам поможет SVG.</p>
+<p>Напишем стили для строчного тега <code class="type">del</code> и подготовим класс для перечёркивания блочных элементов <code class="class">.del-cross</code>.</p>
+<div class="CodeRay"><div class="code"><pre><code class="language-css"><span class="type">del</span><span class="class">.cross</span> {
+    <span class="key">display</span>:<span class="value">inline-block</span>; <span class="comment">/* запрещает перенос текста на следующую строку */</span>
+    <span class="key">text-decoration</span>:<span class="value">none</span>;
+    <span class="key">position</span>:<span class="value">relative</span>;
+}
+
+<span class="class">.del-cross</span> {
+    <span class="key">display</span>:<span class="value">block</span>;
+    <span class="key">position</span>:<span class="value">relative</span>;
+    <span class="key">overflow</span>:<span class="value">hidden</span>; <span class="comment">/* запрещает обтекать другие блоки */</span>
+}
+
+<span class="type">del</span><span class="class">.cross</span><span class="pseudo-class">:before</span>,
+<span class="class">.del-cross</span><span class="pseudo-class">:before</span> {
+    <span class="key">content</span>:<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+    <span class="key">position</span>:<span class="value">absolute</span>;
+    <span class="key">display</span>:<span class="value">block</span>;
+    <span class="key">width</span>:<span class="value">auto</span>;
+    <span class="key">height</span>:<span class="value">auto</span>;
+    <span class="key">left</span>:<span class="float">0</span>;
+    <span class="key">top</span>:<span class="float">0</span>;
+    <span class="key">right</span>:<span class="float">0</span>;
+    <span class="key">bottom</span>:<span class="float">0</span>;
+    <span class="key">background</span>: <span class="color">rgba(0,0,0,0)</span> <span class="function"><span class="delimiter">url(</span><span class="content">cross.svg</span><span class="delimiter">)</span></span> <span class="value">no-repeat</span>;
+    <span class="key">background-size</span>:<span class="float">100%</span> <span class="float">100%</span>; <span class="comment">/* растягивает фон на всю ширину и высоту блока */</span>
+}</code></pre></div></div>
+<aside><p>Примечание: лучше использовать <code class="pseudo-class">:before</code>, так как на <code class="pseudo-class">:after</code> может быть clearfix.</p>
+</aside><p>Пример:</p>
+<div class="demo">
+	<div style="font:bold 18px/1.2 Arial;">components / com_content / <del class="cross">views</del> / category / <del class="cross">tmpl</del> / blog.php <span>→</span> components / com_content /  category / blog.php</div>
+	<div class="media">
+		<figure class="img"><div class="del-cross">
+				<img src="http://placekitten.com/g/300/200" width="300" height="200" alt="No kitten here">
+</div>
+			<figcaption><p>No kitten here</p></figcaption></figure><div class="bd">
+			<p class="del-cross">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet lectus in ante lobortis suscipit. Nullam sed augue id ante tempor ultrices ut eget nibh. Donec ultrices aliquam aliquet. Sed non velit at enim auctor euismod ut eget dolor. Sed rutrum lacinia tellus porta suscipit. Nam tincidunt odio sed ipsum faucibus semper. Fusce malesuada justo ut turpis fringilla a egestas sem scelerisque. Cras ligula neque, pellentesque a eleifend vitae, vulputate id sapien. Aliquam vestibulum aliquam pretium. Proin ut nulla dui.</p>
+			<p class="del-cross">Cras placerat elit sed nisi accumsan at porta elit lacinia. Aliquam erat volutpat. Mauris eu ipsum in urna gravida tristique rutrum ac est. Phasellus vulputate sagittis congue. Aenean nec justo eu neque vehicula imperdiet. Nunc eleifend, diam eu aliquam ullamcorper, ligula felis interdum nunc, ut tincidunt enim erat at orci.</p>
+		</div>
+	</div>
+</div>
+<p>Для картинок класс <code class="class">.del-cross</code> нужно ставить на их обёртку. Тег <code class="type">img</code> не имеет псевдокласса <code class="pseudo-class">:before</code>.</p>
+<p>А теперь посмотрим, что внутри SVG-файла, и как настроить цвет и толщину линий.</p>
+<p><a href="/demo/crosswise/cross.svg">cross.svg</a>:</p>
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;svg</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.w3.org/2000/svg</span><span class="delimiter">"</span></span> <span class="attribute-name">viewBox</span>=<span class="string"><span class="delimiter">"</span><span class="content">0 0 100 100</span><span class="delimiter">"</span></span> <span class="attribute-name">preserveAspectRatio</span>=<span class="string"><span class="delimiter">"</span><span class="content">none</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;line</span> <span class="attribute-name">x1</span>=<span class="string"><span class="delimiter">"</span><span class="content">0</span><span class="delimiter">"</span></span> <span class="attribute-name">y1</span>=<span class="string"><span class="delimiter">"</span><span class="content">0</span><span class="delimiter">"</span></span>   <span class="attribute-name">x2</span>=<span class="string"><span class="delimiter">"</span><span class="content">100</span><span class="delimiter">"</span></span> <span class="attribute-name">y2</span>=<span class="string"><span class="delimiter">"</span><span class="content">100</span><span class="delimiter">"</span></span> <span class="attribute-name">vector-effect</span>=<span class="string"><span class="delimiter">"</span><span class="content">non-scaling-stroke</span><span class="delimiter">"</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">"</span><span class="content">stroke: rgba(255,0,0,0.9); stroke-width: 1.5</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;line</span> <span class="attribute-name">x1</span>=<span class="string"><span class="delimiter">"</span><span class="content">0</span><span class="delimiter">"</span></span> <span class="attribute-name">y1</span>=<span class="string"><span class="delimiter">"</span><span class="content">100</span><span class="delimiter">"</span></span> <span class="attribute-name">x2</span>=<span class="string"><span class="delimiter">"</span><span class="content">100</span><span class="delimiter">"</span></span> <span class="attribute-name">y2</span>=<span class="string"><span class="delimiter">"</span><span class="content">0</span><span class="delimiter">"</span></span>   <span class="attribute-name">vector-effect</span>=<span class="string"><span class="delimiter">"</span><span class="content">non-scaling-stroke</span><span class="delimiter">"</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">"</span><span class="content">stroke: rgba(255,0,0,0.9); stroke-width: 1.5</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/svg&gt;</span></code></pre></div></div>
+<p><code><span class="attribute-name">viewBox</span>=<span class="string"><span class="delimiter">"</span><span class="content">0 0 100 100</span><span class="delimiter">"</span></span></code> — задает виртуальный размер картинки 100×100 безразмерных единиц. Формат записи: <code>x1 y1 x2 y2</code>.</p>
+<p><code><span class="attribute-name">preserveAspectRatio</span>=<span class="string"><span class="delimiter">"</span><span class="content">none</span><span class="delimiter">"</span></span></code> — отключает сохранение пропорций при масштабировании.</p>
+<p><code><span class="attribute-name">vector-effect</span>=<span class="string"><span class="delimiter">"</span><span class="content">non-scaling-stroke</span><span class="delimiter">"</span></span></code> — чтобы толщина линий не зависела от размеров картинки. К сожалению, не работает в IE9.</p>
+<p><code><span class="attribute-name">style</span>=<span class="string"><span class="delimiter">"</span><span class="content">stroke: rgba(255,0,0,0.9); stroke-width: 1.5</span><span class="delimiter">"</span></span></code> — цвет линий можно задавать как в hex, так и в rgba с прозрачностью, а толщину линий делать дробной.</p>
+
+<h2>Поддержка браузерами</h2>
+
+<p>SVG не поддерживается IE8 и ниже. Да и в IE9 толщина линий изменяется пропорционально размерам перечёркиваемого блока, что есть баг.</p>
+<p>Для браузеров, не поддерживающих SVG, можно сделать деградацию с помощью условных комментариев или наоборот, используя <a href="http://modernizr.com/">Modernizer</a>, сделать прогрессивное улучшение только для тех, кто умеет отображать SVG.</p>
+
+<p>
+	<a href="/demo/crosswise/" class="link-to-demo">Демо</a>
+</p>
+  </div>
+</div>
+				
+				<ul class="social-buttons cf">
+					<li><a href="http://twitter.com/share" class="socialite twitter-share" data-count="vertical" data-via="paul_radzkov" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+					<li><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="tall" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+					<li><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+				</ul>
+				
+				
+
+<div id="other-articles">
+  <div class="older">
+	<p class="nav-label-older">&larr; Старше</p>
+    <ul>
+      
+		
+        <li>
+          <h3>
+			<a href="/2012/mobile_developing/" title="Abobe представила замечательный комплекс программ, позволяющий синхронно просматривать и проводить отладку сайтов в браузерах Webkit на компе и нескольких планшетах и смартфонах одновременно. Очень полезное приложение для разработки сайтов с отзывчивой версткой.">&laquo; <span>Отладка мобильных сайтов в Webkit. Инспектор кода на мобильных устройствах</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/photoshop_next_and_previous_layer/" title="При написании макросов в Фотошопе бывает нужно выбрать слой выше или ниже активного. В этом нам помогут горячие клавиши «<kbd>Alt + Shift + [</kbd>» и «<kbd>Alt + Shift + ]</kbd>».">&laquo; <span>Горячие клавиши для выбора предыдущего и следующего слоя в Photoshop</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/html-entities_and_utf_codes/" title="Свойство <code><span class='key'>content</span>:<span class='string'><span class='delimiter'>'</span><span class='content'>x</span><span class='delimiter'>'</span></span></code> отображает HTML-сущности так, как они записаны в CSS, не заменяет их на специальные символы. Например, напишем в CSS <code><span class='key'>content</span>:<span class='string'><span class='delimiter'>'</span><span class='content'>&amp;rarr;</span><span class='delimiter'>'</span></span></code>, получим в браузере «&amp;rarr;» вместо «&rarr;». Поэтому писать спецальные символы в <code class='key'>content</code> нужно 4-значными UTF-кодами (UTF-16 hex), экранированными обратным слэшем.">&laquo; <span>HTML-сущности и их UTF-коды</span></a>
+		  </h3>
+		</li> 
+	  
+	</ul>
+  </div>
+  <div class="newer">
+	
+	  <p class="nav-label-newer">Новее &rarr;</p>
+      <ul>
+		
+		  
+          <li>
+            <h3>
+			  <a href="/2012/chrome_dev_tools/" title="Заметка о том, как в Хроме выключить яваскрипт, отключить кэш или поменять строку User Agent и эмулировать тач-события."><span>Как отключить javascript в Google Chrome</span> &raquo;</a>
+			</h3>
+		  </li>
+		
+		  
+          <li>
+            <h3>
+			  <a href="/2012/pointer-events/" title="Свойство <code class='key'>pointer-events</code> придет к нам с CSS4, но уже сейчас поддерживается более чем половиной браузеров. Если установить <code><span class='key'>pointer-events</span>: <span class='value'>none</span></code>, то элемент перестанет реагировать на hover, click и другие события мыши. Он станет «прозрачным» для взаимодействия, а hover и click будут передаваться элементу, лежащему под ним. Рассмотрим, для чего это можно использовать."><span>Pointer-events</span> &raquo;</a>
+			</h3>
+		  </li>
+		
+		  
+          <li>
+            <h3>
+			  <a href="/2013/lists_and_floats/" title="Для дефолтных браузерных стилей характерно такое поведение: если картинка обтекает список слева, маркеры списка налазят на картинку. От этого можно избавиться незначительно переписав стили."><span>Списки и картинки с флоатами</span> &raquo;</a>
+			</h3>
+		  </li>
+		
+	  </ul>
+	
+  </div>
+</div>
+				<div class="clear"></div>
+				
+				<div id="disqus_thread"></div>
+
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+		</div>
+		<div class="pushfooter clear"></div>
+	</div>
+	<footer class="footer">
+        
+		<p class="copyright">&copy; Павел Радьков 
+        
+            2012
+        
+            
+            <!--div class="person-card" itemscope itemtype="http://schema.org/Person">
+                <img src="/assets/i/paulradzkov.jpg" class="photo" alt="Павел Радьков"/>
+                <p itemprop="name">Павел Радьков</p>
+                <a href="http://plus.google.com/115202814477140711940?rel=author">Google+</a>
+            </div-->
+            
+        </p>
+		<p class="thanx">Движок — <a href="http://nanoc.stoneship.org/">nanoc</a>.</p>
+	</footer>
+	
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	
+	
+		<script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'paulradzkov'; // required: replace example with your forum shortname
+			//var disqus_developer = 1; // developer mode is on
+			var disqus_identifier = 'crosswise';
+			var disqus_title = 'Перечёркивание крест-накрест';
+			
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<script src="/assets/js/libs/socialite.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				Socialite.load();
+			});
+		</script>
+	
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ru"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="ru"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>Как сверстать Гауссово размытие</title>
+	<meta name="keywords" content=", css, svg, IE"/>
+	<meta name="description" content="Как сделать гауссово размытие (gaussian blur) в браузере без javascript Автор: Павел Радьков. Дата публикации: 2013-03-07"/>
+	<meta name="author" content="Павел Радьков" />
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="alternate" type="application/rss+xml" title="Блог Павла Радькова" href="http://paulradzkov.com/atom.xml"/> 
+	<link rel="stylesheet" type="text/css" href="/assets/css/alpha.css?v=3-14" media="all"/>
+    
+	<script src="/assets/js/libs/modernizr-2.0.6.min.js"></script>
+	
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29416794-1']);
+  _gaq.push(['_setDomainName', 'paulradzkov.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+	
+    <div class="allpage">
+		<header class="siteheader">
+			<div class="logo resize-animation"><a href='/'>Павел Радьков</a></div>
+			<nav class="nav resize-animation">
+				<ul>
+					<li><a href='/blog/'>Блог</a></li>
+					<li><a href='/demo/'>Снипеты</a></li>
+					<li><a href='/tags/'>Тэги</a></li>
+					<li><a href="/atom.xml">RSS</a></li>
+				</ul>
+			</nav>		  
+		</header>
+		<div class="pagefield">
+			
+			
+				
+<div class="article">
+  <h1> 
+	
+      Как сверстать Гауссово размытие
+	
+  </h1>
+  
+	<div class="meta resize-animation">
+		<ul class="tags">
+			<li>7 Марта 2013</li>
+			<li>&bull;</li>
+			<li><a href="/2013/gaussian_blur/#disqus_thread" data-disqus-identifier="gaussian-blur" >Комментарии</a></li>
+			
+			<li>&bull;</li>
+				
+					<li>
+						<a href="/tags/IE/" class='tag'>IE</a>
+					</li>
+				
+					<li>
+						<a href="/tags/css/" class='tag'>css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/svg/" class='tag'>svg</a>
+					</li>
+				
+			
+			
+		</ul>
+	</div>
+
+
+  <div class="body">
+	<p>Понадобилось мне как-то сверстать такой эффект: картинка «светится» и подсвечивает фон под собой. Каждая картинка своими цветами. В графическом редакторе свечение — это дубликат картинки с применением размытия по Гауссу в несколько десятков пикселей.</p>
+
+<figure><img src="/2013/gaussian_blur/gaussian_glow_design.jpg" width="715" height="715" alt=""></figure><p>Сначала была мысль сделать размытие, используя canvas. Но, как оказалось, проще сделать это без канваса и яваскрипта через SVG-фильтры. <a href="http://caniuse.com/#feat=css-filters" target="_blank">CSS-фильтры</a> от Adobe <abbr title="Март 2013">ещё</abbr> не слишком распространены: работают с префиксом только в webkit. У <a href="http://caniuse.com/#feat=svg-filters">SVG-фильтров</a> поддержка намного шире — все современные браузеры, кроме Safari 5.1 и Андроид браузера. А в IE уже начиная с версии 5.5 есть старые добрые фильтры (те самые, с длинным названием <code>filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=70);</code>), которые, тем не менее, прекрасно справляются с задачей.</p>
+
+<aside>Если всё-таки нужно именно через canvas, то вам сюда — <a href="http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html" target="_blank">StackBlur for Canvas</a>.</aside><p>
+	<a href="http://cssdeck.com/labs/ambi-glow" class="link-to-demo">Demo</a>
+</p>
+
+Рассмотрим, как это работает. 
+
+Под картинкой спозиционируем SVG-файл:
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;svg</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">bg-blur</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;defs&gt;</span>
+        <span class="tag">&lt;filter</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">blur</span><span class="delimiter">"</span></span> <span class="attribute-name">x</span>=<span class="string"><span class="delimiter">"</span><span class="content">-200%</span><span class="delimiter">"</span></span> <span class="attribute-name">y</span>=<span class="string"><span class="delimiter">"</span><span class="content">-200%</span><span class="delimiter">"</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">400%</span><span class="delimiter">"</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">"</span><span class="content">400%</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;feGaussianBlur</span> <span class="attribute-name">in</span>=<span class="string"><span class="delimiter">"</span><span class="content">SourceGraphic</span><span class="delimiter">"</span></span> <span class="attribute-name">stdDeviation</span>=<span class="string"><span class="delimiter">"</span><span class="content">70</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/filter&gt;</span>
+    <span class="tag">&lt;/defs&gt;</span>
+    
+    <span class="tag">&lt;image</span> <span class="attribute-name">x</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span> <span class="attribute-name">y</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">svg-image</span><span class="delimiter">"</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">"</span><span class="content">280</span><span class="delimiter">"</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">"</span><span class="content">280</span><span class="delimiter">"</span></span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://pcdn.500px.net/27549003/d409bce305cd0f77f3b12d124f69c7a3659bfaea/3.jpg</span><span class="delimiter">"</span></span> <span class="attribute-name">filter</span>=<span class="string"><span class="delimiter">"</span><span class="content">url(#blur)</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+
+<span class="tag">&lt;/svg&gt;</span></code></pre></div></div>
+
+<p>Размеры и позиция SVG задаются в CSS через класс <code class="class">bg-blur</code>.</p>
+
+<p>Внутри тегом <code class="type">image</code> мы помещаем нашу картинку. Левый верхний угол имеет координаты <code><span class="attribute-name">x</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span> <span class="attribute-name">y</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span></code>, чтобы дать место свечению.</p>
+
+<p>Изображению назначен фильтр <code class="type">#blur</code>, который определен ранее в секции <code class="type">defs</code>.</p>
+  </div>
+</div>
+				
+				<ul class="social-buttons cf">
+					<li><a href="http://twitter.com/share" class="socialite twitter-share" data-count="vertical" data-via="paul_radzkov" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+					<li><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="tall" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+					<li><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+				</ul>
+				
+				
+
+<div id="other-articles">
+  <div class="older">
+	<p class="nav-label-older">&larr; Старше</p>
+    <ul>
+      
+		
+        <li>
+          <h3>
+			<a href="/2013/lists_and_floats/" title="Для дефолтных браузерных стилей характерно такое поведение: если картинка обтекает список слева, маркеры списка налазят на картинку. От этого можно избавиться незначительно переписав стили.">&laquo; <span>Списки и картинки с флоатами</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/pointer-events/" title="Свойство <code class='key'>pointer-events</code> придет к нам с CSS4, но уже сейчас поддерживается более чем половиной браузеров. Если установить <code><span class='key'>pointer-events</span>: <span class='value'>none</span></code>, то элемент перестанет реагировать на hover, click и другие события мыши. Он станет «прозрачным» для взаимодействия, а hover и click будут передаваться элементу, лежащему под ним. Рассмотрим, для чего это можно использовать.">&laquo; <span>Pointer-events</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/chrome_dev_tools/" title="Заметка о том, как в Хроме выключить яваскрипт, отключить кэш или поменять строку User Agent и эмулировать тач-события.">&laquo; <span>Как отключить javascript в Google Chrome</span></a>
+		  </h3>
+		</li> 
+	  
+	</ul>
+  </div>
+  <div class="newer">
+	
+	  <p class="nav-label-newer">Новее &rarr;</p>
+      <ul>
+		
+	  </ul>
+	
+  </div>
+</div>
+				<div class="clear"></div>
+				
+				<div id="disqus_thread"></div>
+
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+		</div>
+		<div class="pushfooter clear"></div>
+	</div>
+	<footer class="footer">
+        
+		<p class="copyright">&copy; Павел Радьков 
+        
+            2013
+        
+            
+            <!--div class="person-card" itemscope itemtype="http://schema.org/Person">
+                <img src="/assets/i/paulradzkov.jpg" class="photo" alt="Павел Радьков"/>
+                <p itemprop="name">Павел Радьков</p>
+                <a href="http://plus.google.com/115202814477140711940?rel=author">Google+</a>
+            </div-->
+            
+        </p>
+		<p class="thanx">Движок — <a href="http://nanoc.stoneship.org/">nanoc</a>.</p>
+	</footer>
+	
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	
+	
+		<script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'paulradzkov'; // required: replace example with your forum shortname
+			//var disqus_developer = 1; // developer mode is on
+			var disqus_identifier = 'gaussian-blur';
+			var disqus_title = 'Как сверстать Гауссово размытие';
+			
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<script src="/assets/js/libs/socialite.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				Socialite.load();
+			});
+		</script>
+	
+</body>
+</html>

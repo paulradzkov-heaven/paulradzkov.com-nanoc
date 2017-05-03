@@ -1,0 +1,14 @@
+---
+---
+<div class="excerpt">
+	<% url = "#{item.identifier}" %>
+	<h2>
+		<a href="<%= url %>" title="Читать полностью" class="permalink"><%= item[:title] %></a>
+	</h2>
+	<div class="body">
+		<p>
+			<%= item[:excerpt] || "!!! Missing excerpt metadata for <code>#{item[:filename]}</code>" %>
+		</p>
+		<%= render("_meta", :item => item) %>
+	</div>
+</div>    

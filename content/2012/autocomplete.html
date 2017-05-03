@@ -1,0 +1,31 @@
+--- 
+title: "Автозаполнение форм в Google Chrome"
+excerpt: 'Как перекрасить желтые фоны на инпутах в Google Chrome.'
+created_at: 2012-02-12
+kind: article
+publish: true
+disqusid: chromeautocomplete
+tags: [css,Chrome,bug]
+---
+
+<p>В Google Chrome в user agent stylesheet для полей с автозаполнением прописан желтый фон (#FAFFBD) и черный цвет текста, причем оба правила усилены с помощью <code>!important</code> и переопределить их в своей CSS нельзя.</p>
+<p>В трекере описан этот <a href="http://code.google.com/p/chromium/issues/detail?id=46543">баг</a>, но <time datetime="2012-10-30">пока</time> решения нет.</p>
+<p>Автозаполнение можно выключить с помощью <code><span class="attribute-name">autocomplete</span>=<span class="string"><span class="delimiter">"</span><span class="content">off</span><span class="delimiter">"</span></span></code>:</p>
+<pre><code class="language-html">&lt;form action="…" method="post" <mark>autocomplete="off"</mark>&gt;
+</code></pre>
+
+<p><strong>Обновлено 30 октября 2012.</strong></p>
+<p>Поля c автокомплитом можно перекрасить при помощи трюка с <code class="key">box-shadow</code>:</p>
+<pre><code class="language-css">input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px white; /* цвет вашего фона */
+    -webkit-text-fill-color: black; /* цвет текста */
+}
+</code></pre>
+<p>Если вы для <code class="pseudo-class">:focus</code> состояния задавали стили с использованием <code class="key">box-shadow</code>, то вам придется заново их переопределить:</p>
+<pre><code class="language-css">input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 5px 0 blue, /* ваш box-shadow для :focus */
+                        inset 0 0 0 50px white; /*  цвет вашего фона  */
+    -webkit-text-fill-color: black; /* цвет текста */
+}
+</code></pre>
+<p>При помощи нескольких теней можно <a href="/demo/box-shadow_instead_gradient/">имитировать градиент</a>.</p>

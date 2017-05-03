@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ru"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="ru"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>Списки и картинки с флоатами</title>
+	<meta name="keywords" content=", css, typography"/>
+	<meta name="description" content="Как улучшить обтекание списков картинками. Автор: Павел Радьков. Дата публикации: 2013-01-24"/>
+	<meta name="author" content="Павел Радьков" />
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="alternate" type="application/rss+xml" title="Блог Павла Радькова" href="http://paulradzkov.com/atom.xml"/> 
+	<link rel="stylesheet" type="text/css" href="/assets/css/alpha.css?v=4-5" media="all"/>
+    
+	<script src="/assets/js/libs/modernizr-2.0.6.min.js"></script>
+	
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29416794-1']);
+  _gaq.push(['_setDomainName', 'paulradzkov.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+	
+    <div class="allpage">
+		<header class="siteheader">
+			<div class="logo resize-animation"><a href='/'>Павел Радьков</a></div>
+			<nav class="nav resize-animation">
+				<ul>
+					<li><a href='/blog/'>Блог</a></li>
+					<li><a href='/demo/'>Снипеты</a></li>
+					<li><a href='/tags/'>Тэги</a></li>
+					<li><a href="/atom.xml">RSS</a></li>
+				</ul>
+			</nav>		  
+		</header>
+		<div class="pagefield">
+			
+			
+				
+<div class="article">
+  <h1> 
+	
+      Списки и картинки с флоатами
+	
+  </h1>
+  
+	<div class="meta resize-animation">
+		<ul class="tags">
+			<li>24 Января 2013</li>
+			<li>&bull;</li>
+			<li><a href="/2013/lists_and_floats/#disqus_thread" data-disqus-identifier="lists-and-floats" >Комментарии</a></li>
+			
+			<li>&bull;</li>
+				
+					<li>
+						<a href="/tags/css/" class='tag'>css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/typography/" class='tag'>typography</a>
+					</li>
+				
+			
+			
+		</ul>
+	</div>
+
+
+  <div class="body">
+	<p>Для дефолтных браузерных стилей характерно такое поведение: если картинка обтекает список слева, маркеры списка налазят на картинку (<a href="http://cssdeck.com/labs/floated-images-and-lists" target="_blank">демка</a>):</p>
+
+<figure><img src="/2013/lists_and_floats/floated_images_and_lists_problem.png" width="800" height="560" alt="Если картинка обтекает список, маркеры списка налазят на картинку"></figure><p>Эту проблему можно решить, но придется переписать все отступы для тегов <code class="type">ul</code>, <code class="type">ol</code> и <code class="type">li</code>. Так как <code class="type nobr">ul &gt; li</code> могут использоваться не только для текста с маркерами, но и для менюшек, слайдеров, списков новостей и других семантических конструкций, задавать стили напрямую тегам <code class="type">ol</code>, <code class="type">ul</code> и <code class="type">li</code> опасно. Иначе в дальнейшем придется слишком часто эти стили обнулять. Поэтому создадим отдельный класс <code class="class">.textlist</code>, чтобы ставить его на наши <code class="type">ul</code> и <code class="type">ol</code>.</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-css"><span class="class">.textlist</span> {
+    <span class="key">margin</span>: <span class="float">0</span>;
+    <span class="key">padding</span>: <span class="float">0</span>;
+}
+<span class="class">.textlist</span> &gt; <span class="type">li</span> {
+    <span class="key">margin</span>: <span class="float">0</span>;
+    <span class="key">padding-left</span>: <span class="float">2em</span>;
+    <span class="key">list-style-position</span>: <span class="value">inside</span>;
+    <span class="key">text-indent</span>:<span class="float">-1em</span>;
+    <span class="key">overflow</span>: <span class="value">hidden</span>;
+}</code></pre></div></div>
+
+<p><code><span class="key">overflow</span>: <span class="value">hidden</span></code>  тут нам нужен для того, чтобы запретить тексту обтекание картинки по строкам внутри <code class="type">li</code>. Теперь каждая <code class="type">li</code> обтекает картинку как прямоугольный блок.</p>
+
+<p><code><span class="key">list-style-position</span>: <span class="value">inside</span></code>  чтобы втянуть маркер списка внутрь блока.</p>
+
+<p>А всё остальное, чтобы отступы выглядели как раньше.</p>
+
+<p><a href="http://cssdeck.com/labs/floated-images-and-lists" target="_blank">Демка</a>:</p>
+
+<figure><img src="/2013/lists_and_floats/floated_images_and_lists_solution.png" width="800" height="580" alt="Маркеры списка не налазят на картинку"></figure><p>Живой пример:</p>
+
+<div class="demo">
+	<img src="http://placehold.it/320x240" class="left-image" alt=""><p>Lorem ipsum.</p>
+	<ul class="textlist">
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat porro eligendi quod ratione quaerat dolores quia quasi provident. Veniam earum iste modi quam aliquam qui itaque corporis quia vel inventore.</li>
+	    <li>In dapibus dapibus risus in molestie. Vestibulum vestibulum, orci a aliquam iaculis, diam quam ultrices lacus, sed tincidunt augue elit vitae eros. </li>
+	    <li>Nunc non arcu sed nibh fermentum venenatis ut quis ante. </li>
+	    <li>Nunc id mauris sit amet orci rhoncus lobortis eu mollis justo. Phasellus enim dolor, pretium sed commodo vitae, ultrices ac nibh. Vivamus et turpis odio, ac ultricies nibh. Donec erat augue, tempus et aliquet et, porttitor vitae ante. </li>
+	    <li>Quisque eu ante in nisl rutrum facilisis nec sed orci. Integer vel nibh sit amet libero convallis tempus sit amet a enim. Nullam felis velit, auctor eu tristique eu, lacinia vitae turpis. </li>
+	    <li>Praesent nisl felis, aliquet quis volutpat id, pretium sit amet elit. Mauris consequat vestibulum purus sit amet ornare. In euismod hendrerit quam vitae vehicula.</li>
+	</ul>
+</div>
+  </div>
+</div>
+				
+				<ul class="social-buttons cf">
+					<li><a href="http://twitter.com/share" class="socialite twitter-share" data-count="vertical" data-via="paul_radzkov" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+					<li><a href="https://plus.google.com/share" class="socialite googleplus-one" data-size="tall" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+					<li><a href="http://www.facebook.com/sharer.php" class="socialite facebook-like" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+				</ul>
+				
+				
+
+<div id="other-articles">
+  <div class="older">
+	<p class="nav-label-older">&larr; Старше</p>
+    <ul>
+      
+		
+        <li>
+          <h3>
+			<a href="/2012/pointer-events/" title="Свойство <code class='key'>pointer-events</code> придет к нам с CSS4, но уже сейчас поддерживается более чем половиной браузеров. Если установить <code><span class='key'>pointer-events</span>: <span class='value'>none</span></code>, то элемент перестанет реагировать на hover, click и другие события мыши. Он станет «прозрачным» для взаимодействия, а hover и click будут передаваться элементу, лежащему под ним. Рассмотрим, для чего это можно использовать.">&laquo; <span>Pointer-events</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/chrome_dev_tools/" title="Заметка о том, как в Хроме выключить яваскрипт, отключить кэш или поменять строку User Agent и эмулировать тач-события.">&laquo; <span>Как отключить javascript в Google Chrome</span></a>
+		  </h3>
+		</li> 
+	  
+		
+        <li>
+          <h3>
+			<a href="/2012/crosswise/" title="Как при помощи CSS перечеркнуть слово или блок текста диагональными линиями крест-накрест.">&laquo; <span>Перечёркивание крест-накрест</span></a>
+		  </h3>
+		</li> 
+	  
+	</ul>
+  </div>
+  <div class="newer">
+	
+	  <p class="nav-label-newer">Новее &rarr;</p>
+      <ul>
+		
+	  </ul>
+	
+  </div>
+</div>
+				<div class="clear"></div>
+				
+				<div id="disqus_thread"></div>
+
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+		</div>
+		<div class="pushfooter clear"></div>
+	</div>
+	<footer class="footer">
+        
+		<p class="copyright">&copy; Павел Радьков 
+        
+            2013
+        
+            
+            <!--div class="person-card" itemscope itemtype="http://schema.org/Person">
+                <img src="/assets/i/paulradzkov.jpg" class="photo" alt="Павел Радьков"/>
+                <p itemprop="name">Павел Радьков</p>
+                <a href="http://plus.google.com/115202814477140711940?rel=author">Google+</a>
+            </div-->
+            
+        </p>
+		<p class="thanx">Движок — <a href="http://nanoc.stoneship.org/">nanoc</a>.</p>
+	</footer>
+	
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	
+	
+		<script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'paulradzkov'; // required: replace example with your forum shortname
+			//var disqus_developer = 1; // developer mode is on
+			var disqus_identifier = 'lists-and-floats';
+			var disqus_title = 'Списки и картинки с флоатами';
+			
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<script src="/assets/js/libs/socialite.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				Socialite.load();
+			});
+		</script>
+	
+</body>
+</html>

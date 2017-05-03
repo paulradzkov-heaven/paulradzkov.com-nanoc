@@ -1,0 +1,209 @@
+Crashlog created at 2013-01-24 21:50:14 +0300
+
+=== MESSAGE:
+
+ArgumentError: comparison of String with 2012 failed
+
+=== COMPILATION STACK:
+
+  - [item]   /2012/autocomplete/ (rep default)
+
+=== BACKTRACE:
+
+  0. layout /mainlayout/:62:in `>'
+  1. layout /mainlayout/:62:in `get_binding'
+  2. C:/Ruby193/lib/ruby/1.9.1/erb.rb:838:in `eval'
+  3. C:/Ruby193/lib/ruby/1.9.1/erb.rb:838:in `result'
+  4. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/filters/erb.rb:34:in `run'
+  5. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/result_data/item_rep.rb:413:in `layout'
+  6. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/item_rep_proxy.rb:69:in `layout'
+  7. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/rule_context.rb:68:in `layout'
+  8. ./Rules:57:in `block in load'
+  9. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/rule.rb:68:in `instance_eval'
+  10. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/rule.rb:68:in `apply_to'
+  11. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/compiler.rb:383:in `compile_rep'
+  12. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/compiler.rb:339:in `block in compile_reps'
+  13. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/compiler.rb:332:in `loop'
+  14. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/compiler.rb:332:in `compile_reps'
+  15. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/compilation/compiler.rb:89:in `run'
+  16. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/base/source_data/site.rb:58:in `compile'
+  17. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/commands/compile.rb:62:in `run'
+  18. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/command_runner.rb:14:in `block in call'
+  19. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
+  20. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  21. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/command_runner.rb:13:in `call'
+  22. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command_dsl.rb:185:in `block in runner'
+  23. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
+  24. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
+  25. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
+  26. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:262:in `run'
+  27. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli.rb:52:in `block in run'
+  28. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
+  29. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  30. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib/nanoc/cli.rb:50:in `run'
+  31. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/bin/nanoc:19:in `<top (required)>'
+  32. C:/Ruby193/bin/nanoc:23:in `load'
+  33. C:/Ruby193/bin/nanoc:23:in `<main>'
+
+=== VERSION INFORMATION:
+
+nanoc 3.4.3 © 2007-2012 Denis Defreyne.
+Running ruby 1.9.3 (2012-10-12) on i386-mingw32 with RubyGems 1.8.24.
+
+=== INSTALLED GEMS:
+
+  activesupport 3.2.9
+  builder 3.1.4
+  bundler 1.2.3
+  coderay 1.0.8
+  colored 1.2
+  commonjs 0.2.6
+  cri 2.3.0
+  haml 3.1.7
+  i18n 0.6.1
+  less 2.2.2
+  mime-types 1.19
+  multi_json 1.5.0
+  nanoc 3.4.3
+  nokogiri 1.5.5
+  rack 1.4.1
+  rake 10.0.2
+  rdiscount 1.6.8
+  ref 1.0.2
+  therubyracer 0.11.0beta1
+
+=== ENVIRONMENT:
+
+ALLUSERSPROFILE => "C:\\ProgramData"
+APPDATA => "C:\\Users\\Paul\\AppData\\Roaming"
+BUNDLE_BIN_PATH => "C:/Ruby193/lib/ruby/gems/1.9.1/gems/bundler-1.2.3/bin/bundle"
+BUNDLE_GEMFILE => "d:/Dropbox/nanoc/paulradzkov.com/Gemfile"
+COMMANDER_DRIVE => "D:"
+COMMANDER_EXE => "D:\\totalcmd\\TOTALCMD64.EXE"
+COMMANDER_INI => "D:\\totalcmd\\wincmd.ini"
+COMMANDER_PATH => "D:\\totalcmd"
+COMPUTERNAME => "INTERPAUL"
+ComSpec => "C:\\Windows\\system32\\cmd.exe"
+CommonProgramFiles => "C:\\Program Files (x86)\\Common Files"
+CommonProgramFiles(x86) => "C:\\Program Files (x86)\\Common Files"
+CommonProgramW6432 => "C:\\Program Files\\Common Files"
+FP_NO_HOST_CHECK => "NO"
+GEM_HOME => "C:/Ruby193/lib/ruby/gems/1.9.1"
+GEM_PATH => "C:/Ruby193/lib/ruby/gems/1.9.1;C:/Users/Paul/.gem/ruby/1.9.1"
+HOME => "C:/Users/Paul"
+HOMEDRIVE => "C:"
+HOMEPATH => "\\Users\\Paul"
+LANG => "ru_RU.UTF-8"
+LOCALAPPDATA => "C:\\Users\\Paul\\AppData\\Local"
+LOGONSERVER => "\\\\MicrosoftAccount"
+NUMBER_OF_PROCESSORS => "2"
+OS => "Windows_NT"
+PATHEXT => ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW"
+PROCESSOR_ARCHITECTURE => "x86"
+PROCESSOR_ARCHITEW6432 => "AMD64"
+PROCESSOR_IDENTIFIER => "Intel64 Family 6 Model 23 Stepping 6, GenuineIntel"
+PROCESSOR_LEVEL => "6"
+PROCESSOR_REVISION => "1706"
+PROMPT => "$P$G"
+PSModulePath => "C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\"
+PUBLIC => "C:\\Users\\Public"
+Path => "C:/Ruby193/lib/ruby/gems/1.9.1/gems/nokogiri-1.5.5-x86-mingw32/ext/nokogiri;C:/Ruby193/lib/ruby/gems/1.9.1/bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;c:\\Python27;C:\\Ruby193\\bin"
+ProgramData => "C:\\ProgramData"
+ProgramFiles => "C:\\Program Files (x86)"
+ProgramFiles(x86) => "C:\\Program Files (x86)"
+ProgramW6432 => "C:\\Program Files"
+RUBYOPT => "-IC:/Ruby193/lib/ruby/gems/1.9.1/gems/bundler-1.2.3/lib -rbundler/setup"
+SSH_AGENT_PID => "6300"
+SSH_AUTH_SOCK => "/tmp/ssh-lDPpxf5960/agent.5960"
+SystemDrive => "C:"
+SystemRoot => "C:\\Windows"
+TEMP => "C:\\Users\\Paul\\AppData\\Local\\Temp"
+TMP => "C:\\Users\\Paul\\AppData\\Local\\Temp"
+USER => "Paul"
+USERDOMAIN => "INTERPAUL"
+USERDOMAIN_ROAMINGPROFILE => "INTERPAUL"
+USERNAME => "Paul"
+USERPROFILE => "C:\\Users\\Paul"
+__COMPAT_LAYER => "RunAsAdmin DetectorsWin7"
+asl.log => "Destination=file"
+windir => "C:\\Windows"
+
+=== GEMFILE.LOCK:
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.2.9)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    builder (3.1.4)
+    coderay (1.0.8)
+    colored (1.2)
+    commonjs (0.2.6)
+    cri (2.3.0)
+      colored (>= 1.2)
+    haml (3.1.7)
+    i18n (0.6.1)
+    less (2.2.2)
+      commonjs (~> 0.2.6)
+    mime-types (1.19)
+    multi_json (1.5.0)
+    nanoc (3.4.3)
+      cri (~> 2.2)
+    nokogiri (1.5.5-x86-mingw32)
+    rack (1.4.1)
+    rake (10.0.2)
+    rdiscount (1.6.8)
+    ref (1.0.2)
+    therubyracer (0.11.0beta1-x86-mingw32)
+      ref
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  activesupport
+  builder
+  coderay
+  cri
+  haml
+  less
+  mime-types
+  nanoc
+  nokogiri
+  rack
+  rake
+  rdiscount
+  therubyracer
+
+=== $LOAD_PATH:
+
+  0. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib
+  1. C:/Ruby193/lib/ruby/gems/1.9.1/gems/therubyracer-0.11.0beta1-x86-mingw32/lib
+  2. C:/Ruby193/lib/ruby/gems/1.9.1/gems/therubyracer-0.11.0beta1-x86-mingw32/ext
+  3. C:/Ruby193/lib/ruby/gems/1.9.1/gems/ref-1.0.2/lib
+  4. C:/Ruby193/lib/ruby/gems/1.9.1/gems/rdiscount-1.6.8/lib
+  5. C:/Ruby193/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib
+  6. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nokogiri-1.5.5-x86-mingw32/lib
+  7. C:/Ruby193/lib/ruby/gems/1.9.1/gems/nanoc-3.4.3/lib
+  8. C:/Ruby193/lib/ruby/gems/1.9.1/gems/mime-types-1.19/lib
+  9. C:/Ruby193/lib/ruby/gems/1.9.1/gems/less-2.2.2/lib
+  10. C:/Ruby193/lib/ruby/gems/1.9.1/gems/haml-3.1.7/lib
+  11. C:/Ruby193/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib
+  12. C:/Ruby193/lib/ruby/gems/1.9.1/gems/commonjs-0.2.6/lib
+  13. C:/Ruby193/lib/ruby/gems/1.9.1/gems/colored-1.2/lib
+  14. C:/Ruby193/lib/ruby/gems/1.9.1/gems/coderay-1.0.8/lib
+  15. C:/Ruby193/lib/ruby/gems/1.9.1/gems/builder-3.1.4/lib
+  16. C:/Ruby193/lib/ruby/gems/1.9.1/gems/activesupport-3.2.9/lib
+  17. C:/Ruby193/lib/ruby/gems/1.9.1/gems/multi_json-1.5.0/lib
+  18. C:/Ruby193/lib/ruby/gems/1.9.1/gems/i18n-0.6.1/lib
+  19. C:/Ruby193/lib/ruby/gems/1.9.1/gems/rake-10.0.2/lib
+  20. C:/Ruby193/lib/ruby/gems/1.9.1/gems/bundler-1.2.3/lib
+  21. C:/Ruby193/lib/ruby/site_ruby/1.9.1
+  22. C:/Ruby193/lib/ruby/site_ruby/1.9.1/i386-msvcrt
+  23. C:/Ruby193/lib/ruby/site_ruby
+  24. C:/Ruby193/lib/ruby/vendor_ruby/1.9.1
+  25. C:/Ruby193/lib/ruby/vendor_ruby/1.9.1/i386-msvcrt
+  26. C:/Ruby193/lib/ruby/vendor_ruby
+  27. C:/Ruby193/lib/ruby/1.9.1
+  28. C:/Ruby193/lib/ruby/1.9.1/i386-mingw32

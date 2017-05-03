@@ -1,0 +1,11 @@
+$(document).ready(function(){
+});
+
+$(window).load(function() {
+    
+
+    //turn on custom font
+    $('html').addClass('custom-font');
+    
+    
+});

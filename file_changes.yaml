@@ -1,0 +1,129 @@
+---
+:content/2009/12-31-end_of_year.haml:
+  :created_at: 2009/12/31
+  :updated_at: 2010-06-16 01:14:42.000000000 +03:00
+  :digest: a26aafbc69e5e95b7fe2b258bef9513fadfdce5c
+:content/2010/01-01-ruby_article.haml:
+  :created_at: 2010/01/01
+  :updated_at: 2010-06-16 01:14:42.000000000 +03:00
+  :digest: 35eab6135db6e757cbec195f0d31d1ceb1b7c4d1
+:content/2010/01-03-stylesheet_article.haml:
+  :created_at: 2010/01/03
+  :updated_at: 2010-06-16 01:14:42.000000000 +03:00
+  :digest: f2a1d55406e72627d1b85366492f38570f9ff000
+:content/2010/01-13-erb-markdown-test.html.md:
+  :created_at: 2010/01/13
+  :updated_at: 2010-06-16 01:14:42.000000000 +03:00
+  :digest: b0b78b830d428a5ec9015c0decccaf5cde7d6653
+:content/2010/01-14-markdown-test.md:
+  :created_at: 2010/01/14
+  :updated_at: 2010-06-16 01:14:42.000000000 +03:00
+  :digest: 290196131b48b501ad9c5f340b63039991e490d9
+:content/2010/01-15-getting_started_with_nanoc3_blog.html.md:
+  :created_at: 2010/01/15
+  :updated_at: 2010-06-16 01:45:40.000000000 +03:00
+  :digest: b83ea94d2919845a9f25c4a5b597ebdcbe660809
+:content/2012/02-12-photoshop_hints.md:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 14:37:03.000000000 +03:00
+  :digest: 720d892cd78e18e5d822689d7df52514cc5ebb3e
+:content/2012/photoshop_hints.md:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 14:37:03.000000000 +03:00
+  :digest: 720d892cd78e18e5d822689d7df52514cc5ebb3e
+:content/2012/photoshop_hints.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 15:27:31.000000000 +03:00
+  :digest: 1bc0c6e5b74d627eb056f30c9acbb86c51111bb9
+:content/2012/photoshop_new_layer_based_slice.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-12-09 14:10:59.000000000 +03:00
+  :digest: !binary |-
+    M2U3MTY2NTNlZTViYjE5NDcyMzc2MGViMzc3NzExMTUwODQ1YjliNw==
+:content/2012/autocomplete.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-12-13 00:33:23.000000000 +03:00
+  :digest: !binary |-
+    YzY4MDE1ZDcyMGIwMDdlMTQzMzI2ZDg0YzY1ZjQxMjU0OGQxNjFjNg==
+:content/2012/creating-typography.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 15:41:49.000000000 +03:00
+  :digest: 0762939d2029c14ba6c20b1966bacb46ebb9cae6
+:content/2012/generated-content-bullets.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 23:02:21.000000000 +03:00
+  :digest: eb371cd0871c011f424413fcde9f649d0d6dd756
+:content/2010/01-01-do_not_publish.haml:
+  :created_at: 2010/01/01
+  :updated_at: 2012-02-13 15:08:11.000000000 +03:00
+  :digest: 75605da929fdff70685e9b5208f4a7bbc6cd3b16
+:content/2010/01-05-many_tags_test.md:
+  :created_at: 2010/01/05
+  :updated_at: 2012-02-13 15:08:04.000000000 +03:00
+  :digest: 79a380e986c62bf3797a8e40355c73bc3095c503
+:content/2012/02--18-hello_2.md:
+  :created_at: '2012-02-18'
+  :updated_at: 2012-02-18 23:41:55.000000000 +03:00
+  :digest: 4016e28858ac5530748cdce8d1224e2c665cd825
+:content/2012/creating_typography.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-02-12 15:41:49.000000000 +03:00
+  :digest: 0762939d2029c14ba6c20b1966bacb46ebb9cae6
+:content/2012/generated_content_bullets.html:
+  :created_at: '2012-02-12'
+  :updated_at: 2012-03-08 17:06:58.000000000 +03:00
+  :digest: 80d511b2f79587e88f7caa2501dd5fe7de9bd26c
+:content/2012/html-entities_and_utf_codes.html:
+  :created_at: '2012-03-11'
+  :updated_at: 2012-12-26 14:17:00.000000000 +03:00
+  :digest: !binary |-
+    ZDY0ODFhZGJlZjdjODZmZmYxMzgyZTdmYTMyNjUyZDU5NDZiMGIyNw==
+:content/2012/photoshop_next_and_previous_layer.html:
+  :created_at: '2012-03-18'
+  :updated_at: 2012-12-09 14:10:59.000000000 +03:00
+  :digest: !binary |-
+    NGM4N2Q5NjVjMGJhMzI2NzJiMTM4ZTkyZmEwNmQ2OTBlNzM4ZTdlYg==
+:content/2012/mobile_developing.html:
+  :created_at: '2012-04-08'
+  :updated_at: 2012-12-09 14:10:59.000000000 +03:00
+  :digest: !binary |-
+    ZTA4ZjAzYzQ4MWMyZDk1ZTQ3OWYwYmI2ODllNWQ0ZDBjOTdjOWQxMQ==
+:content/2012/front-end_efficiency.html:
+  :created_at: '2012-04-08'
+  :updated_at: 2012-04-11 00:09:58.000000000 +03:00
+  :digest: 8950a70769c7238990429ee101b03e05a1cf3774
+:content/2012/responsive_images.html:
+  :created_at: '2012-04-08'
+  :updated_at: 2012-12-09 19:26:53.000000000 +03:00
+  :digest: !binary |-
+    OTU3OTUzZTQ1YTY3YmRlNmJhMjZjNzE0ZDE1NmVhNGJiNGEyZGIyNQ==
+:content/2012/crosswise.html:
+  :created_at: '2012-10-28'
+  :updated_at: 2012-12-12 21:45:34.000000000 +03:00
+  :digest: !binary |-
+    Y2ZiOWIzNWViNDRlMWJlYjQ1OGJiY2IyN2UzMGY4YTljMzA0ZGI4Yw==
+:content/2012/chrome_dev_tools.html:
+  :created_at: '2012-11-27'
+  :updated_at: 2012-12-09 14:10:58.000000000 +03:00
+  :digest: !binary |-
+    YTZhMDcwZjBjMTI5MmI3ZjljM2JlZjFiOTFjNTYwNDZjNWYxODgyOQ==
+:content/2012/pointer-events.html:
+  :created_at: '2012-04-08'
+  :updated_at: 2012-12-12 22:10:44.000000000 +03:00
+  :digest: !binary |-
+    NGQ3MTdjMjcwMjJhYjBmOGNjYzVkYzMyNjAyNTU5NDQ0NDU2M2E4Zg==
+:content/2012/lists_and_floats.html:
+  :created_at: '2012-12-23'
+  :updated_at: 2013-01-24 21:18:01.000000000 +03:00
+  :digest: !binary |-
+    YWQ4MWMxY2RlOTNkN2I5YTgzNTg4YWJhYWEyYWJkYjAyNDdhZjg0YQ==
+:content/2013/lists_and_floats.html:
+  :created_at: '2013-01-24'
+  :updated_at: 2013-01-24 21:21:42.000000000 +03:00
+  :digest: !binary |-
+    YWQ4MWMxY2RlOTNkN2I5YTgzNTg4YWJhYWEyYWJkYjAyNDdhZjg0YQ==
+:content/2013/gaussian_blur.html:
+  :created_at: '2013-03-07'
+  :updated_at: 2013-03-07 17:29:24.000000000 +03:00
+  :digest: !binary |-
+    MGQ2NDYyNDQ1MmQwNzk3NGNlOTMyYWZkMWNmMTlhNjgzOTMzYjA1Ng==

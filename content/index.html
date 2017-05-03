@@ -1,0 +1,49 @@
+---
+title: "Блог Павла Радькова"
+---
+
+<div class="about-me">
+	<div class="userpic drop-shadow lifted pushed">
+		<img src="/assets/i/paulradzkov.jpg" class="photo" alt="Павел Радьков"/>
+	</div>
+	<div class="helloworld resize-animation">
+		<p>Приветствую! Я фронт-энд разработчик, это для меня и работа, и хобби одновременно. Работаю верстальщиком в компании <a href="http://belitsoft.ru/">Belitsoft</a> в Минске. Интересуюсь графикой, дизайном, очень люблю интерфейсы. Пишу про вёрстку и про веб-разработку в целом.</p>
+		<p class="social force-justify">
+			<span class="fj-item">Мои контакты:</span>
+			<span class="fj-item"><a href="https://twitter.com/#!/paul_radzkov" class="twitter fj-item">@paul_radzkov</a></span>
+			<span class="fj-item"><a href="http://plus.google.com/115202814477140711940/about" class="gplus fj-item">google+</a></span>
+			<span class="fj-item"><a href="http://www.facebook.com/radzkov" class="facebook fj-item">facebook</a></span>
+			<span class="fj-item"><a href="mailto:radzkov@gmail.com" class="email fj-item">radzkov@gmail.com</a></span>
+		</p>
+	</div>
+</div>
+
+<div class="blogroll">
+	<% oldest_item = nil %>
+	<% current_index = 0 %>
+	
+	<% sorted_articles[current_index, featured_count].each do |item| %>
+		<% oldest_item = item %>
+		<% current_index += 1 %>
+		<div class="featured">
+			<%= render("_article", :item => item, :is_embedded => true) %>
+		</div>
+	<% end %>
+	<% sorted_articles[current_index, excerpt_count].each do |item| %>
+		  <% oldest_item = item %>
+		  <%= render("_excerpt", :item => item) %>
+	<% end %>
+</div>                
+
+<aside class="tag-cloud">
+	<nav id="taglist">
+		Облако тегов:<br/>
+		<% tags = count_tags() %>
+		<% tags.each.sort_by {|k,v| k}.each do |tag_count| %>
+			<% tag = tag_count[0] %>
+			<a href="/tags/<%= tag %>/" class="tag"><%= tag %></a>
+		<% end %> 
+	</nav>
+</aside>
+
+

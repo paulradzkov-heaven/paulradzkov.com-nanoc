@@ -1,0 +1,20 @@
+---
+---
+<% if item[:kind] == "article" %>
+	<div class="meta resize-animation">
+		<ul class="tags">
+			<li><%= blogpost_date(item[:created_at]) %></li>
+			<li>&bull;</li>
+			<li><a href="<%= item.identifier %>#disqus_thread" data-disqus-identifier="<%= item[:disqusid] %>" >Комментарии</a></li>
+			<% if item[:tags] %>
+			<li>&bull;</li>
+				<% item[:tags].sort.each do |tag| %>
+					<li>
+						<a href="/tags/<%= tag %>/" class='tag'><%= tag %></a>
+					</li>
+				<% end %>
+			<% end %>
+			
+		</ul>
+	</div>
+<% end %>

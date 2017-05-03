@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+
+preprocess do
+  # authors may unpublish items by setting meta attribute publish: false
+  items.delete_if { |item| item[:publish] == false }
+  
+  copy_static
+  create_tag_pages
+  add_update_item_attributes
+end
+
+compile '/assets/css/*/' do
+    ext = item[:extension].nil? ? nil : item[:extension].split('.').last
+	  if ext == 'less'
+        filter :less
+      elsif ext == 'sass'
+        filter :sass
+      else
+        # don’t filter or layout
+      end
+end
+
+compile 'google26b06bc10f204855' do
+    # nothing
+end    
+
+
+
+compile '*/custom/' do
+  # filter :sass
+  # don’t filter or layout. this is custom.css
+end
+
+compile '*' do
+  if item.binary?
+        # don’t filter binary items
+  else
+	  # item[:extension] returns 'html.erb' for multi-dotted filename
+	  ext = item[:extension].nil? ? nil : item[:extension].split('.').last
+	  if ext == 'erb'
+		filter :erb
+	  elsif ext == 'haml' || ext.nil?
+		filter :haml
+	  elsif ext == 'md' || ext == 'markdown'
+		filter :erb
+		filter :rdiscount
+	  elsif ext == 'html'
+		filter :erb
+        filter :colorize_syntax
+	  else
+		# raise "Filter is not configured for #{item.identifier} in Rules file."
+		filter :erb
+	  end
+
+	  # use layouts with .html extension or layout specified in meta
+      
+      used_layout = item[:layout]
+      used_layout = "none" unless item[:layout] || File.extname(route_path(item)) == '.html'
+      used_layout = '/mainlayout/' unless item[:layout] == "none"
+      if item[:layout]
+        layout item[:layout]
+      else
+        layout used_layout
+      end
+      
+      
+  end
+end
+
+route '/assets/css/*/' do
+  item.identifier.chop + '.css'
+end
+
+route '*/custom/' do
+  item.identifier.chop + '.css'
+end
+
+route '/atom/' do
+	'/atom.xml'
+end
+
+route '/sitemap/' do
+	'/sitemap.xml'
+end
+
+route '/robots/' do
+	'/robots.txt'
+end
+
+route '/humans/' do
+	'/humans.txt'
+end
+
+route '*' do
+	if item.binary?
+		# Write item with identifier /foo/ to /foo.ext
+		item.identifier.chop + '.' + item[:extension]
+	else
+		# route_path(item)
+		# Write item with identifier /foo/ to /foo/index.html
+		item.identifier + 'index.html'
+	end
+end
+
+layout '*', :erb
